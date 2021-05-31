@@ -1,6 +1,5 @@
 package kz.bcc.tutorial.balatime.service.impl;
 
-import kz.bcc.tutorial.balatime.model.Grade;
 import kz.bcc.tutorial.balatime.model.Teacher;
 import kz.bcc.tutorial.balatime.repository.TeacherRepository;
 import kz.bcc.tutorial.balatime.service.TeacherService;

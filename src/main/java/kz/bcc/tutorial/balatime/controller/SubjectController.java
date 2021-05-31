@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Subject;
 import kz.bcc.tutorial.balatime.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,15 +17,15 @@ public class SubjectController {
     @Autowired
     private SubjectService subjectService;
 
-    @ApiOperation(value = "Get All subjects")
+    @ApiOperation(value = "Get all subjects")
     @GetMapping("/all")
     public ResponseEntity<List<Subject>> getAll() {
         return ResponseEntity.ok(subjectService.getAll());
     }
 
-    @ApiOperation(value = "Create or update subject object")
+    @ApiOperation(value = "Create or update subject")
     @PostMapping()
-    public ResponseEntity<Subject> calculateTestObject(@RequestBody Subject subject) {
+    public ResponseEntity<Subject> postSubject(@RequestBody Subject subject) {
         return ResponseEntity.ok(subjectService.create(subject));
     }
     @ApiOperation(value = "Get subject by id")

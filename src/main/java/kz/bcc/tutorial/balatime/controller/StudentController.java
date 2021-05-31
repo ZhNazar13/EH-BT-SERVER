@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Student;
 import kz.bcc.tutorial.balatime.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @ApiOperation(value = "Get All students")
+    @ApiOperation(value = "Get all students")
     @GetMapping("/all")
     public ResponseEntity<List<Student>> getAll() {
         return ResponseEntity.ok(studentService.getAll());
@@ -26,12 +25,12 @@ public class StudentController {
 
     @ApiOperation(value = "Create or update student object")
     @PostMapping()
-    public ResponseEntity<Student> calculateTestObject(@RequestBody Student student) {
+    public ResponseEntity<Student> postStudent(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.create(student));
     }
     @ApiOperation(value = "Get student by id")
     @GetMapping("/id/{id}")
-    public ResponseEntity<Student> getTeacherById(@PathVariable Integer id) {
+    public ResponseEntity<Student> getStudentById(@PathVariable Integer id) {
         return ResponseEntity.ok(studentService.getById(id));
     }
     @ApiOperation(value = "Delete student by id")

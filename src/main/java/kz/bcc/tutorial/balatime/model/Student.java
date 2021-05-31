@@ -27,7 +27,8 @@ public class Student {
     private String parent_name;
     @Column(name = "parent_email")
     private String parent_email;
-    @Column(name = "grade_id")
-    private Integer grade_id;
+    @ManyToOne
+    @JoinColumn(name="group_id")
+    private Group group;
 
 }
