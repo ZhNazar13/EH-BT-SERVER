@@ -26,10 +26,11 @@ public class User implements UserDetails {
     @Column(name = "id")
     private Integer id;
 
-//    @Column(name = "role_id")
-//    private Integer roleId;
+    @Column(name = "role_id")
+    private Integer roleId;
+
     @ManyToOne
-    @JoinColumn(name="role_id")
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
     private Role role;
     @Column(name = "login", unique = true)
     private String login;
