@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.User;
 import kz.bcc.tutorial.balatime.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +35,19 @@ public class UserController {
         return ResponseEntity.ok(userService.getById(id));
     }
 
-    @ApiOperation(value = "Delete user by Id")
+    @ApiOperation(value = "Delete user by Id PPP")
     @DeleteMapping("/id/{id}")
     public void deleteUserById(@PathVariable Integer id) {
         userService.delete(id);
+    }
+
+    @ApiOperation(value = "Get user by id")
+    @GetMapping("/page/{page}/size/{size}")
+    public ResponseEntity<Page<User>> getByPageAndSize(
+            @PathVariable Integer page,
+            @PathVariable Integer size
+    ){
+        return ResponseEntity.ok(userService.getAllByPageAndSize(page,size));
     }
 
 }

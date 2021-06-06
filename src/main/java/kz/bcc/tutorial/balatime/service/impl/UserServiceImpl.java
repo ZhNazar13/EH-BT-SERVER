@@ -1,9 +1,14 @@
 package kz.bcc.tutorial.balatime.service.impl;
 
+import io.swagger.models.auth.In;
 import kz.bcc.tutorial.balatime.model.User;
 import kz.bcc.tutorial.balatime.repository.UserRepository;
+import kz.bcc.tutorial.balatime.repository.pagination.UserPagingRepository;
 import kz.bcc.tutorial.balatime.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +21,8 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService, UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserPagingRepository userPagingRepository;
 
     @Override
     public User create(User user) {
@@ -49,5 +56,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
         return user;
+    }
+
+    public Page<User> getAllByPageAndSize(Integer page, Integer size){
+        Pageable pageable = PageRequest.of(page, size);
+        return userPagingRepository.findAll(pageable);
     }
 }
