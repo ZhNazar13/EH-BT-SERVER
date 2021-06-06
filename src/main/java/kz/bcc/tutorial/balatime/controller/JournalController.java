@@ -28,6 +28,7 @@ public class JournalController {
     public ResponseEntity<Journal> postJournal(@RequestBody Journal journal) {
         return ResponseEntity.ok(journalService.create(journal));
     }
+
     @ApiOperation(value = "Get record by id")
     @GetMapping("/id/{id}")
     public ResponseEntity<Journal> getJournalById(@PathVariable Integer id) {

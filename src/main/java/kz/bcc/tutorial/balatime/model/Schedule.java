@@ -3,6 +3,8 @@ package kz.bcc.tutorial.balatime.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.time.DayOfWeek;
 
 @Table(name = "schedule", schema = "public")
 @Builder(toBuilder = true)
@@ -22,9 +24,6 @@ public class Schedule {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="subject_id")
-    private Subject subject;
-    @ManyToOne
     @JoinColumn(name="academ_id")
     private Academ academ;
     @ManyToOne
@@ -34,10 +33,10 @@ public class Schedule {
     @JoinColumn(name="teacher_id")
     private Teacher teacher;
     @Column(name = "day")
-    private String day;
+    private DayOfWeek day;
     @Column(name = "quarter")
     private String quarter;
     @Column(name = "time")
-    private String time;
+    private Time time;
 
 }
