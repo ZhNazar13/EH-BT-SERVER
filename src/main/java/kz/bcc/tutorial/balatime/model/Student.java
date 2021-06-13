@@ -30,7 +30,7 @@ public class Student {
     @ManyToOne
     @JoinColumn(name="group_id")
     private Group group;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="user_id")
     private User user;
 

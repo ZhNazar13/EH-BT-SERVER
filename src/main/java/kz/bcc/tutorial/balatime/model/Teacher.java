@@ -25,7 +25,7 @@ public class Teacher {
     private String firstName;
     @Column(name = "workload")
     private Integer workload;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="user_id")
     private User user;
 

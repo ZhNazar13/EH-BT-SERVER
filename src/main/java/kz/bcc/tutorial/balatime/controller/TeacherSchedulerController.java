@@ -20,11 +20,8 @@ public class TeacherSchedulerController {
     @ApiOperation(value = "Get scheduler map")
     @GetMapping("/all/teacherId/{teacherId}")
     public ResponseEntity<List<SchedulerRow>> getAll(
-            @PathVariable Integer teacherId,
-            @RequestParam Integer year,
-            @RequestParam Integer month,
-            @RequestParam Integer day
+            @PathVariable Integer teacherId
     ){
-        return ResponseEntity.ok(teacherSchedulerService.getAll(teacherId, year, month, day));
-    };
+        return ResponseEntity.ok(teacherSchedulerService.getAll(teacherId));
+    }
 }

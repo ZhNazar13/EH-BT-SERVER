@@ -3,10 +3,10 @@ package kz.bcc.tutorial.balatime.model.dto;
 import lombok.Data;
 
 @Data
-public class StudentHTDLItemContent {
+public class HTDLItemContent {
     private String classRoom;
     private String homeWork;
-    private String nextLesson;
+    private String theme;
     private Boolean attendance;
     private Integer grade;
 

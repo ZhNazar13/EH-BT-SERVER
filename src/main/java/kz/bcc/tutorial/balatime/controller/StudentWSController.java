@@ -2,11 +2,10 @@ package kz.bcc.tutorial.balatime.controller;
 
 import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.dto.MyCourcesItem;
-import kz.bcc.tutorial.balatime.model.dto.StudentHTDLItem;
+import kz.bcc.tutorial.balatime.model.dto.HTDLItem;
 import kz.bcc.tutorial.balatime.service.StudentWSService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +24,7 @@ public class StudentWSController {
 
     @ApiOperation(value = "Get hot data")
     @GetMapping("/hot/studentId/{studentId}")
-    public ResponseEntity<List<StudentHTDLItem>> getHotData(@PathVariable Integer studentId) {
+    public ResponseEntity<List<HTDLItem>> getHotData(@PathVariable Integer studentId) {
 
         return ResponseEntity.ok(studentWSService.getHotData(studentId));
     }

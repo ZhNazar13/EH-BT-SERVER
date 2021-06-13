@@ -32,11 +32,11 @@ public class Schedule {
     @ManyToOne
     @JoinColumn(name="teacher_id")
     private Teacher teacher;
-    @Column(name = "day")
-    private DayOfWeek day;
-    @Column(name = "quarter")
-    private String quarter;
-    @Column(name = "time")
-    private Time time;
+    @Column(name = "class_room")
+    private String classRoom;
+    @Column(name = "subject_order")
+    private Integer subjectOrder;
+    @Column(name = "day_of_week")
+    private DayOfWeek dayOfWeek;
 
 }

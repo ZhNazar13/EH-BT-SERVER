@@ -3,6 +3,7 @@ package kz.bcc.tutorial.balatime.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Table(name = "journal", schema = "public")
 @Builder(toBuilder = true)
@@ -31,5 +32,7 @@ public class Journal {
     private Integer attendance;
     @Column(name = "grade")
     private Integer grade;
+    @Column(name = "date")
+    private Date date;
 
 }

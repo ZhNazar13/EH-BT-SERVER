@@ -1,8 +1,8 @@
 package kz.bcc.tutorial.balatime.service.impl;
 
 import kz.bcc.tutorial.balatime.model.dto.MyCourcesItem;
-import kz.bcc.tutorial.balatime.model.dto.StudentHTDLItem;
-import kz.bcc.tutorial.balatime.model.dto.StudentHTDLItemContent;
+import kz.bcc.tutorial.balatime.model.dto.HTDLItem;
+import kz.bcc.tutorial.balatime.model.dto.HTDLItemContent;
 import kz.bcc.tutorial.balatime.service.StudentWSService;
 import org.springframework.stereotype.Service;
 
@@ -12,20 +12,20 @@ import java.util.List;
 @Service
 public class StudentWSServiceImpl implements StudentWSService {
     @Override
-    public List<StudentHTDLItem> getHotData(Integer studentId) {
-        List<StudentHTDLItem> list = new ArrayList<>();
+    public List<HTDLItem> getHotData(Integer studentId) {
+        List<HTDLItem> list = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
-            StudentHTDLItem studentHTDLItem = new StudentHTDLItem();
-            studentHTDLItem.setTitle("08:00 Subject " + i);
-            studentHTDLItem.setSummary("Teacher " + i);
-            StudentHTDLItemContent content = new StudentHTDLItemContent();
+            HTDLItem HTDLItem = new HTDLItem();
+            HTDLItem.setTitle("08:00 Subject " + i);
+            HTDLItem.setTeacher("Teacher " + i);
+            HTDLItemContent content = new HTDLItemContent();
             content.setClassRoom("Classroom " + i);
             content.setHomeWork("Homework " + i);
-            content.setNextLesson("Lesson title " + i);
+            content.setTheme("Lesson title " + i);
             content.setAttendance(i % 2 == 0);
             content.setGrade(i * 10 - 4);
-            studentHTDLItem.setContent(content);
-            list.add(studentHTDLItem);
+            HTDLItem.setContent(content);
+            list.add(HTDLItem);
         }
         return list;
     }
