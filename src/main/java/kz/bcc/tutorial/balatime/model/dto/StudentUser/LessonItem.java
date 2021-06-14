@@ -7,7 +7,7 @@ public class LessonItem {
     private String name;
     private String teacher;
     private String group;
-    private String Room;
+    private String room;
     private Integer day;
     private boolean free;
 }
