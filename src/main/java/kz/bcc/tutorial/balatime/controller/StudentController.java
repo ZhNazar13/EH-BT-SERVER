@@ -2,8 +2,10 @@ package kz.bcc.tutorial.balatime.controller;
 
 import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Student;
+import kz.bcc.tutorial.balatime.model.Teacher;
 import kz.bcc.tutorial.balatime.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +40,14 @@ public class StudentController {
     public ResponseEntity<String> deleteStudentById(@PathVariable Integer id) {
         studentService.delete(id);
         return ResponseEntity.ok("Student by " + id + "was deleted!");
+    }
+
+    @ApiOperation(value = "Get all students")
+    @GetMapping("/page/{page}/size/{size}")
+    public ResponseEntity<Page<Student>> getByPageAndSize(
+            @PathVariable Integer page,
+            @PathVariable Integer size
+    ){
+        return ResponseEntity.ok(studentService.getAllByPageAndSize(page,size));
     }
 }

@@ -2,8 +2,10 @@ package kz.bcc.tutorial.balatime.controller;
 
 import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Teacher;
+import kz.bcc.tutorial.balatime.model.User;
 import kz.bcc.tutorial.balatime.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +25,7 @@ public class TeacherController {
         return ResponseEntity.ok(teacherService.getAll());
     }
 
-    @ApiOperation(value = "Create or update teacher object")
+    @ApiOperation(value = "Create or update teacher")
     @PostMapping()
     public ResponseEntity<Teacher> postTeacher(@RequestBody Teacher teacher) {
         return ResponseEntity.ok(teacherService.create(teacher));
@@ -33,10 +35,20 @@ public class TeacherController {
     public ResponseEntity<Teacher> getTeacherById(@PathVariable Integer id) {
         return ResponseEntity.ok(teacherService.getById(id));
     }
+
     @ApiOperation(value = "Delete teacher by id")
     @DeleteMapping("/id/{id}")
     public ResponseEntity<String> deleteTeacherById(@PathVariable Integer id) {
         teacherService.delete(id);
         return ResponseEntity.ok("Teacher by " + id + "was deleted!");
+    }
+
+    @ApiOperation(value = "Get all teachers")
+    @GetMapping("/page/{page}/size/{size}")
+    public ResponseEntity<Page<Teacher>> getByPageAndSize(
+            @PathVariable Integer page,
+            @PathVariable Integer size
+    ){
+        return ResponseEntity.ok(teacherService.getAllByPageAndSize(page,size));
     }
 }

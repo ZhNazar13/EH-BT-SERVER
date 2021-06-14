@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Group;
 import kz.bcc.tutorial.balatime.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +41,14 @@ public class GroupController {
     public ResponseEntity<String> deleteGroupById(@PathVariable Integer id) {
         groupService.delete(id);
         return ResponseEntity.ok("Class by " + id + "was deleted!");
+    }
+
+    @ApiOperation(value = "Get all classes")
+    @GetMapping("/page/{page}/size/{size}")
+    public ResponseEntity<Page<Group>> getAllByPageAndSize(
+            @PathVariable Integer page,
+            @PathVariable Integer size
+    ){
+        return ResponseEntity.ok(groupService.getAllByPageAndSize(page, size));
     }
 }

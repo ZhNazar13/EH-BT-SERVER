@@ -2,8 +2,11 @@ package kz.bcc.tutorial.balatime.controller;
 
 import io.swagger.annotations.ApiOperation;
 import kz.bcc.tutorial.balatime.model.Subject;
+import kz.bcc.tutorial.balatime.model.Teacher;
+import kz.bcc.tutorial.balatime.repository.pagination.SubjectPagingRepository;
 import kz.bcc.tutorial.balatime.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,5 +41,14 @@ public class SubjectController {
     public ResponseEntity<String> deleteSubjectById(@PathVariable Integer id) {
         subjectService.delete(id);
         return ResponseEntity.ok("Subject by " + id + "was deleted!");
+    }
+
+    @ApiOperation(value = "Get all subjects")
+    @GetMapping("/page/{page}/size/{size}")
+    public ResponseEntity<Page<Subject>> getByPageAndSize(
+            @PathVariable Integer page,
+            @PathVariable Integer size
+    ){
+        return ResponseEntity.ok(subjectService.getAllByPageAndSize(page,size));
     }
 }

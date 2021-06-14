@@ -35,13 +35,13 @@ public class UserController {
         return ResponseEntity.ok(userService.getById(id));
     }
 
-    @ApiOperation(value = "Delete user by Id PPP")
+    @ApiOperation(value = "Delete user by Id")
     @DeleteMapping("/id/{id}")
     public void deleteUserById(@PathVariable Integer id) {
         userService.delete(id);
     }
 
-    @ApiOperation(value = "Get user by id")
+    @ApiOperation(value = "Get all users")
     @GetMapping("/page/{page}/size/{size}")
     public ResponseEntity<Page<User>> getByPageAndSize(
             @PathVariable Integer page,
@@ -49,5 +49,4 @@ public class UserController {
     ){
         return ResponseEntity.ok(userService.getAllByPageAndSize(page,size));
     }
-
 }

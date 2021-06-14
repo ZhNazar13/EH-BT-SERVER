@@ -1,6 +1,7 @@
 package kz.bcc.tutorial.balatime.service;
 
 import kz.bcc.tutorial.balatime.model.Group;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface GroupService {
     List<Group> getAll();
 
     void delete(Integer id);
+
+    Page<Group> getAllByPageAndSize(Integer page, Integer size);
 }
